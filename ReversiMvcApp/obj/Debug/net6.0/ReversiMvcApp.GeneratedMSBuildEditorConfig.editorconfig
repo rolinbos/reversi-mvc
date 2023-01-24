@@ -1,0 +1,96 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ReversiMvcApp
+build_property.RootNamespace = ReversiMvcApp
+build_property.ProjectDir = /Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Spel/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbC9DcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Spel/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbC9EZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Spel/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbC9EZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Spel/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbC9FZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Spel/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Spel/Play.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbC9QbGF5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Speler/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbGVyL0NyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Speler/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbGVyL0RlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Speler/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbGVyL0RldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Speler/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbGVyL0VkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Speler/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbGVyL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-54xjpg3ob3

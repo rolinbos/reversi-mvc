@@ -1,0 +1,33 @@
+@using System.Security.Claims
+@model Spel
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+
+    ClaimsPrincipal currentUser = this.User;
+    var currentUserId = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+}
+
+<h2 class="text-3xl font-bold my-10 text-center">Spel @Model.omschrijving</h2>
+<h4 class="text-center">
+    @if (Model.speler1Token == currentUserId)
+    {
+        <span>Jij bent wit</span>
+    } else if (Model.speler2Token == currentUserId)
+    {
+        <span>Jij bent zwart</span>
+    }
+</h4>
+
+<div class="c-container">
+    <div id="board"></div>
+    <h3 id="turn">Tegenstander</h3>
+    <div id="message" class="c-message"></div>
+</div>
+
+@section Scripts {
+    <script>
+        start('https://localhost:7230/api', '@Model.token', '@currentUserId');
+    </script>
+}

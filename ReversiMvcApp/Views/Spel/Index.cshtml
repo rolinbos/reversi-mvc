@@ -1,0 +1,83 @@
+@using System.Security.Claims
+@model dynamic
+
+@{
+    ViewData["Title"] = "Index";
+    ClaimsPrincipal currentUser = this.User;
+    var currentUserId = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<h2>Nieuwe spellen</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th>
+            Omschrijving
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.alleOpenstaandeSpellen) {
+        <tr>
+            <td>
+                @item.omschrijving
+            </td>
+            <td></td>
+            <td>
+                @if (item.speler1Token != currentUserId)
+                {
+                    <a asp-action="Join" asp-route-token="@item.token">JOIN</a>
+                }
+                else
+                {
+                    <span>Wachten op tegenstander</span>
+                }
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+<h2>Lopende spellen</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Omschrijving
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.spellenVanGebruiker) {
+    <tr>
+            <td>
+                @item.omschrijving
+            </td>
+            <td>
+                @if (item.aanDeBeurt == 1 && currentUserId == item.speler1Token)
+                {
+                    <span>Jij bent aan de buurt</span>
+                }else if (item.aanDeBeurt == 2 && currentUserId == item.speler2Token)
+                {
+                    <span>Jij bent aan de buurt</span>
+                }
+                else
+                {
+                    <span>Tegenstander is aan de beurt</span>
+                }
+            </td>
+            <td>
+                <a asp-action="Play" asp-route-token="@item.token">Naar bord toe</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
