@@ -37,8 +37,8 @@ async function getSpel() {
                 }
                 
                 if (
-                    (spel.speler1Token == spelerToken && spel.aandeBeurt == 1) ||
-                    (spel.speler2Token == spelerToken && spel.aandeBeurt == 2)
+                    (spel.speler1Token == spelerToken && spel.aandeBeurt == 2) ||
+                    (spel.speler2Token == spelerToken && spel.aandeBeurt == 1)
                 ) {
                     document.getElementById("turn").innerText = "Jij bent aan de beurt";
                 } else {
