@@ -13,6 +13,23 @@ function start(_baseUrl, _token, _spelerToken) {
 }
 
 async function getSpel() {
+    let formData = new FormData();
+    formData.append('id', token);
+    
+    axios({
+        method: "post",
+        url: baseUrl + '/spel/afgelopen',
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+    }).then(r => {
+        console.log(r.data);
+        if (r.data.status == 605) {
+            showMessage("Het spel is afgelopen", 'success');
+
+            window.location.href = '/spel/done?token='+ token +'&spelerToken=' + spelerToken;
+        }
+    }).catch(e => console.log(e));
+    
     axios.get(baseUrl + '/spel/krijg-spel?token=' + token)
         .then(response => {
             console.log(response.data);
@@ -56,7 +73,7 @@ async function getSpel() {
                     body += '</div>';
                 }
             }
-
+            
             board.innerHTML += body;
 
             clickHandlers.forEach((e) => document.getElementById(e.handlerId).addEventListener("click", () => click(e.id, e.token, e.rij, e.kolom)));
@@ -79,17 +96,47 @@ function click(id, token, rij, kolom) {
         headers: { "Content-Type": "multipart/form-data" },
     })
         .then(e => {
-            if (e.data == 'IMPOSSIBLE') {
+            if (e.data.status == 602) {
                 showMessage('Deze zet is niet mogelijk', 'error');
-            } else if (e.data == 'NOTYOURTURN') {
+            } else if (e.data.status == 601) {
                 showMessage('Het is niet jouw beurt', 'error');
-            } else if (e.data == 'GAMEOVER') {
-                showMessage('Game over', 'error');
-            } else if (e.data == 'OK') {
+            } else if (e.data.status == 200) {
                 getSpel();
+            } else if (e.data.status == 605) {
+                showMessage("Het spel is afgelopen", 'success');
+
+                window.location.href = '/spel/done?token='+ token +'&spelerToken=' + spelerToken;
             }
             else {
                 showMessage('Er is iets mis gegaan', 'error');
+            }
+        })
+        .catch(e => {
+            showMessage('Er is iets mis gegaan', 'error');
+        });
+}
+
+function beurtOverslaan() {
+    let formData = new FormData();
+    formData.append('id', token);
+    formData.append('token', spelerToken);
+
+    axios({
+        method: "post",
+        url: baseUrl + '/spel/overslaan',
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+    })
+        .then(e => {
+            console.log(e.data);
+            if (e.data.status == 606) {
+                showMessage('Je kan nog een set doen', 'error');
+            } else if (e.data.status == 605) {
+                showMessage("Het spel is afgelopen", 'success');
+
+                window.location.href = '/spel/done?token='+ token +'&spelerToken=' + spelerToken;
+            } else {
+                getSpel();
             }
         })
         .catch(e => {

@@ -43,16 +43,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbC9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Spel/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbC9EZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Spel/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbC9EZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Spel/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbC9FZGl0LmNzaHRtbA==
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Spel/Done.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbC9Eb25lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Spel/Index.cshtml]

@@ -1,0 +1,17 @@
+@using ReversiMvcApp.Responses
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model string
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+    
+    ClaimsPrincipal currentUser = this.User;
+    var currentUserId = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+}
+
+
+<h3>@Model</h3>
+
+<a asp-action="Index" class="btn btn-primary mt-5">Naar overzicht spellen</a>

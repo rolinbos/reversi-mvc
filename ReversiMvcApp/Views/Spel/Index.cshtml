@@ -7,6 +7,14 @@
     var currentUserId = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 }
 
+<h1>Statistieken</h1>
+
+<div class="d-flex flex-row justify-content-between">
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
 <h1>Index</h1>
 
 <p>
@@ -57,17 +65,22 @@
     </thead>
     <tbody>
 @foreach (var item in Model.spellenVanGebruiker) {
-    <tr>
+    @if (item.speler1Token == currentUserId && !item.speler1Read || item.speler2Token == currentUserId && !item.speler2Read)
+    {
+        <tr>
             <td>
                 @item.omschrijving
             </td>
             <td>
-                @if (item.aanDeBeurt == 1 && currentUserId == item.speler1Token)
+                @if (item.aanDeBeurt == 1 && currentUserId == item.speler2Token)
                 {
                     <span>Jij bent aan de buurt</span>
-                }else if (item.aanDeBeurt == 2 && currentUserId == item.speler2Token)
+                }else if (item.aanDeBeurt == 2 && currentUserId == item.speler1Token)
                 {
                     <span>Jij bent aan de buurt</span>
+                } else if (item.aanDeBeurt == 0)
+                {
+                    <span>Spel is afgelopen. Kijk snel of je hebt gewonnen</span>
                 }
                 else
                 {
@@ -75,9 +88,11 @@
                 }
             </td>
             <td>
-                <a asp-action="Play" asp-route-token="@item.token">Naar bord toe</a>
+                <a asp-action="Play" asp-route-spelToken="@item.token">Naar bord toe</a>
             </td>
-        </tr>
+        </tr>        
+    }
+    
 }
     </tbody>
 </table>

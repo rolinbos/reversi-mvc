@@ -1,4 +1,5 @@
 using ReversiMvcApp.Models;
+using ReversiMvcApp.Responses;
 
 namespace ReversiMvcApp.Services;
 
@@ -22,6 +23,12 @@ public class ApiServices
         }
         
         return objecten;
+    }
+
+    public string Done(string token, string spelerToken)
+    {
+        var resultaat = _httpClient.GetAsync($"/api/spel/done?token={token}&spelerToken={spelerToken}").Result;
+        return resultaat.Content.ReadAsStringAsync().Result;
     }
 
     public List<Spel> KrijgAlleSpellenVanGebruiker(string Guuid)

@@ -45,12 +45,12 @@ public class HomeController : Controller
             }
             
             // Krijg alle spellen van de user
-            List<Spel> spellen = _apiServices.KrijgAlleSpellenVanGebruiker(spelers.First().Guuid);
-
-            if (spellen.Count() > 0)
-            {
-                return RedirectToAction("Play", "Spel", new {spelToken = spellen.First().token});
-            }
+            // List<Spel> spellen = _apiServices.KrijgAlleSpellenVanGebruiker(spelers.First().Guuid);
+            //
+            // if (spellen.Count() > 0)
+            // {
+            //     return RedirectToAction("Play", "Spel", new {spelToken = spellen.First().token});
+            // }
             
             return RedirectToAction("Index", "Spel");
         }

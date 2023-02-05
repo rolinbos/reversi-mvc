@@ -8,6 +8,8 @@ public class Spel
     public int aanDeBeurt { get; set; }
     public string speler1Token { get; set; }
     public string speler2Token { get; set; }
+    public bool speler1Read { get; set; }
+    public bool speler2Read { get; set; }
     public Dictionary<string, int> bord { get; set; }
 
     public string beurt
