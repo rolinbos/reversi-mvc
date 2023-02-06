@@ -2,14 +2,56 @@ let board = document.getElementById('board');
 let baseUrl = null;
 let token = null;
 let spelerToken = null;
+let chart1 = null;
+let chart2 = null;
+
+function initChart() {
+    chart1 = new Chart(document.getElementById('myChart').getContext('2d'), {
+        type: 'line',
+        options: {
+            animation: {
+                duration: 0,
+            },
+            legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                    boxWidth: 80,
+                    fontColor: 'black'
+                }
+            }
+        }
+    });
+    
+    chart2 = new Chart(document.getElementById('myChart2').getContext('2d'), {
+        type: 'line',
+        options: {
+            animation: {
+                duration: 0,
+            },
+            legend: {
+                display: true,
+                position: 'top',
+                labels: {
+                    boxWidth: 80,
+                    fontColor: 'black'
+                }
+            }
+        }
+    });
+}
+
 function start(_baseUrl, _token, _spelerToken) {
     console.log(_baseUrl, _token, _spelerToken);
     baseUrl = _baseUrl;
     token = _token;
     spelerToken = _spelerToken;
     
+    initChart();
     getSpel();
+    statistieken();
     setInterval(getSpel,1000);
+    setInterval(statistieken,1000);
 }
 
 async function getSpel() {
@@ -158,4 +200,107 @@ function showMessage(message, type) {
     setTimeout(function() {
         msg.style.display = 'none';
     }, 5000);
+}
+
+function statistieken() {
+    axios.get(baseUrl + '/spel/statistieken?token=' + token).then(response => {
+        console.log(response.data.length, response.data);
+
+        let datums = [];
+        let geen = [];
+        let zwart = [];
+        let wit = [];
+        
+        for (let i = 0; i < response.data.length; i++) {
+            console.log("DATUM: " + response.data[i][0].datum);
+            datums.push(response.data[i][0].datum);
+            
+            for (let j = 0; j < response.data[i].length; j++) {
+                console.log("MEU");
+                if (response.data[i][j].type == 'aantal-wit') {
+                    wit.push(response.data[i][j].waarde);   
+                } else if (response.data[i][j].type == 'aantal-zwart') {
+                    zwart.push(response.data[i][j].waarde);    
+                } else {
+                    geen.push(response.data[i][j].waarde);
+                }
+            }
+        }
+        
+        // destroy chart
+        
+        
+        var dataFirst = {
+            label: "Zwart",
+            data: zwart,
+            lineTension: 0,
+            fill: false,
+            borderColor: 'black'
+        };
+
+        var dataSecond = {
+            label: "Wit",
+            data: wit,
+            lineTension: 0,
+            fill: false,
+            borderColor: 'blue'
+        };
+
+        var dataThird = {
+            label: "Geen",
+            data: geen,
+            lineTension: 0,
+            fill: false,
+            borderColor: 'red'
+        };
+        
+        // new Chart(document.getElementById('myChart').getContext('2d'), {
+        //     type: 'line',
+        //     data: {
+        //         labels: datums,
+        //         datasets: [dataFirst, dataSecond]
+        //     },
+        //     options: {
+        //         legend: {
+        //             display: true,
+        //             position: 'top',
+        //             labels: {
+        //                 boxWidth: 80,
+        //                 fontColor: 'black'
+        //             }
+        //         }
+        //     }
+        // }).update().resize(250, 250);
+
+        // new Chart(document.getElementById('myChart2').getContext('2d'), {
+        //     type: 'line',
+        //     data: {
+        //         labels: datums,
+        //         datasets: [dataThird]
+        //     },
+        //     options: {
+        //         legend: {
+        //             display: true,
+        //             position: 'top',
+        //             labels: {
+        //                 boxWidth: 80,
+        //                 fontColor: 'black'
+        //             }
+        //         }
+        //     }
+        // }).update().resize(250, 250);
+
+        chart1.data = {
+            labels: datums,
+            datasets: [dataFirst, dataSecond, dataThird]
+        };
+        chart1.update();
+        
+        chart2.data = {
+            labels: datums,
+            datasets: [dataThird]
+        };
+        chart2.update();
+
+    });
 }
