@@ -292,13 +292,13 @@ function statistieken() {
 
         chart1.data = {
             labels: datums,
-            datasets: [dataFirst, dataSecond, dataThird]
+            datasets: [dataFirst]
         };
         chart1.update();
         
         chart2.data = {
             labels: datums,
-            datasets: [dataThird]
+            datasets: [dataSecond]
         };
         chart2.update();
 
