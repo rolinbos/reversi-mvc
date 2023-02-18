@@ -31,6 +31,18 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Spel" asp-action="Index">Spellen</a>
                     </li>
+                    @if (this.User.IsInRole("Beheerder") || this.User.IsInRole("Mediator"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Speler" asp-action="Index">Spelers</a>
+                        </li>
+                    }
+                    @if (this.User.IsInRole("Beheerder"))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Spel" asp-action="Index">Rolen</a>
+                        </li>
+                    }
                 </ul>
                 <partial name="_LoginPartial"/>
             </div>

@@ -31,6 +31,22 @@ public class ApiServices
         return resultaat.Content.ReadAsStringAsync().Result;
     }
 
+    public bool VerwijderAlleSpellenVanGebruiker(string spelerToken)
+    {
+        var formContent = new FormUrlEncodedContent(new[]
+        {
+            new KeyValuePair<string, string>("spelerToken", spelerToken) 
+        });
+        
+        var resultaat = _httpClient.PostAsync($"/api/spel/verwijder-spellen-van-speler", formContent).Result;
+        if (resultaat.IsSuccessStatusCode)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public List<Spel> KrijgAlleSpellenVanGebruiker(string Guuid)
     {
         List<Spel> objecten = new();

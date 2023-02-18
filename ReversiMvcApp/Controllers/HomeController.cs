@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using ReversiMvcApp.Data;
 using ReversiMvcApp.Models;
@@ -12,15 +13,17 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly ReversiDbContext _context;
     private readonly ApiServices _apiServices;
-    
-    public HomeController(ILogger<HomeController> logger, ReversiDbContext context)
+    private readonly UserManager<IdentityUser> _userManager;
+
+    public HomeController(ILogger<HomeController> logger, ReversiDbContext context, UserManager<IdentityUser> userManager)
     {
         _logger = logger;
         _context = context;
         _apiServices = new ApiServices();
+        _userManager = userManager;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         ClaimsPrincipal currentUser = this.User;
         if (currentUser.Identity.IsAuthenticated)
@@ -39,10 +42,13 @@ public class HomeController : Controller
                     AantalGewonnen = 0,
                     AantalVerloren = 0,
                 };
-
+                
                 _context.Spelers.Add(speler);
                 _context.SaveChanges();
             }
+            
+            var currentIdentityUser = await _userManager.GetUserAsync(User);
+            await _userManager.AddToRoleAsync(currentIdentityUser, "speler");
             
             // Krijg alle spellen van de user
             // List<Spel> spellen = _apiServices.KrijgAlleSpellenVanGebruiker(spelers.First().Guuid);
