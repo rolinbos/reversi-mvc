@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +17,13 @@ namespace ReversiMvcApp
     {
         private readonly ApiServices _apiServices;
         private readonly ReversiDbContext _context;
-
-        public SpelerController(ReversiDbContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+        
+        public SpelerController(ReversiDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
             _apiServices = new ApiServices();
+            _userManager = userManager;
         }
 
         // GET: Speler
@@ -126,6 +129,44 @@ namespace ReversiMvcApp
                 return RedirectToAction(nameof(Index));
             }
             return View(speler);
+        }
+
+        // POST: Speler/Role/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Beheerder")]
+        public async Task<IActionResult> Role(string id, List<String> roles)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Speler speler = _context.Spelers.First(speler => speler.Guuid == id);
+
+            if (speler == null)
+            {
+                return NotFound();
+            }
+            
+            var currentUser = await _userManager.FindByIdAsync(speler.Guuid);
+
+            if (currentUser == null)
+            {
+                return NotFound();
+            }
+            
+            var currentRolesFromUser = await _userManager.GetRolesAsync(currentUser);
+            await _userManager.RemoveFromRolesAsync(currentUser, currentRolesFromUser.ToArray());
+            
+            foreach (var role in roles)
+            {
+                await _userManager.AddToRoleAsync(currentUser, role);
+            }
+            
+            return RedirectToAction(nameof(Index));
         }
         
         // GET: Speler/Delete/5
