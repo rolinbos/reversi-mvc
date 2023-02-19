@@ -10,7 +10,7 @@ public class ApiServices
     public ApiServices()
     {
         _httpClient = new HttpClient();
-        _httpClient.BaseAddress = new Uri("https://localhost:7230/");
+        _httpClient.BaseAddress = new Uri("https://rolinbos.hbo-ict.org");
     }
     
     public List<Spel> KrijgAlleOPenSpellen() {
