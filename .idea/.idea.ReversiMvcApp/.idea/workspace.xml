@@ -62,23 +62,4 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/ReversiMvcApp/Controllers/SpelerController.cs</url>
-          <line>140</line>
-          <properties documentPath="$PROJECT_DIR$/ReversiMvcApp/Controllers/SpelerController.cs" initialLine="140" containingFunctionPresentation="method 'Role'">
-            <startOffsets>
-              <option value="4667" />
-            </startOffsets>
-            <endOffsets>
-              <option value="4668" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
 </project>
