@@ -11,6 +11,7 @@ public class ApiServices
     {
         _httpClient = new HttpClient();
         _httpClient.BaseAddress = new Uri("http://127.0.0.1");
+        // _httpClient.BaseAddress = new Uri("https://rolinbos.hbo-ict.org");
     }
     
     public List<Spel> KrijgAlleOPenSpellen() {

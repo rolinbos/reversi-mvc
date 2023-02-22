@@ -8,7 +8,25 @@
 }
 
 <h1>Spellen</h1>
-
+<div>
+    <h3>Statistieken</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Gewonnen</th>
+            <th scope="col">Verloren</th>
+            <th scope="col">Gelijk</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@Model.speler.AantalGewonnen</td>
+            <td>@Model.speler.AantalVerloren</td>
+            <td>@Model.speler.AantalGelijk</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 <p>
     <a asp-action="Create">Create New</a>
 </p>
@@ -24,7 +42,8 @@
     </tr>
     </thead>
     <tbody>
-    @foreach (var item in Model.alleOpenstaandeSpellen) {
+    @foreach (var item in Model.alleOpenstaandeSpellen)
+    {
         <tr>
             <td>
                 @item.omschrijving
@@ -47,54 +66,57 @@
 <h2>Lopende spellen</h2>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                Omschrijving
-            </th>
-            <th></th>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            Omschrijving
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.spellenVanGebruiker) {
-    @if (item.speler1Token == currentUserId && !item.speler1Read || item.speler2Token == currentUserId && !item.speler2Read)
+    @foreach (var item in Model.spellenVanGebruiker)
     {
-        <tr>
-            <td>
-                @item.omschrijving
-            </td>
-            <td>
-                @if (item.speler2Token == null || item.speler2Token == "")
-                {
-                    <span>Wachten op tegenstander</span>
-                } else if (item.aanDeBeurt == 1 && currentUserId == item.speler2Token)
-                {
-                    <span>Jij bent aan de buurt</span>
-                }else if (item.aanDeBeurt == 2 && currentUserId == item.speler1Token)
-                {
-                    <span>Jij bent aan de buurt</span>
-                } else if (item.aanDeBeurt == 0)
-                {
-                    <span>Spel is afgelopen. Kijk snel of je hebt gewonnen</span>
-                }
-                else
-                {
-                    <span>Tegenstander is aan de beurt</span>
-                }
-            </td>
-            <td>
-                @if (item.speler2Token == null || item.speler2Token == "")
-                {
-                    <span></span>
-                }
-                else
-                {
-                    <a asp-action="Play" asp-route-spelToken="@item.token">Naar bord toe</a>
-                }
-            </td>
-        </tr>        
+        @if (item.speler1Token == currentUserId && !item.speler1Read || item.speler2Token == currentUserId && !item.speler2Read)
+        {
+            <tr>
+                <td>
+                    @item.omschrijving
+                </td>
+                <td>
+                    @if (item.speler2Token == null || item.speler2Token == "")
+                    {
+                        <span>Wachten op tegenstander</span>
+                    }
+                    else if (item.aanDeBeurt == 1 && currentUserId == item.speler2Token)
+                    {
+                        <span>Jij bent aan de buurt</span>
+                    }
+                    else if (item.aanDeBeurt == 2 && currentUserId == item.speler1Token)
+                    {
+                        <span>Jij bent aan de buurt</span>
+                    }
+                    else if (item.aanDeBeurt == 0)
+                    {
+                        <span>Spel is afgelopen. Kijk snel of je hebt gewonnen</span>
+                    }
+                    else
+                    {
+                        <span>Tegenstander is aan de beurt</span>
+                    }
+                </td>
+                <td>
+                    @if (item.speler2Token == null || item.speler2Token == "")
+                    {
+                        <span></span>
+                    }
+                    else
+                    {
+                        <a asp-action="Play" asp-route-spelToken="@item.token">Naar bord toe</a>
+                    }
+                </td>
+            </tr>
+        }
     }
-    
-}
     </tbody>
 </table>

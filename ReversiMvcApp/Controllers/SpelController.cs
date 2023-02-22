@@ -29,9 +29,12 @@ namespace ReversiMvcApp
         // GET: Spel
         public ActionResult Index()
         {
+            String Guuid = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             dynamic myModel = new ExpandoObject();
             myModel.alleOpenstaandeSpellen = _apiServices.KrijgAlleOPenSpellen(); 
-            myModel.spellenVanGebruiker = _apiServices.KrijgAlleSpellenVanGebruiker(this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+            myModel.spellenVanGebruiker = _apiServices.KrijgAlleSpellenVanGebruiker(Guuid);
+            myModel.speler = _context.Spelers.First(speler =>
+                speler.Guuid == Guuid);
             
             return View(myModel);
         }
