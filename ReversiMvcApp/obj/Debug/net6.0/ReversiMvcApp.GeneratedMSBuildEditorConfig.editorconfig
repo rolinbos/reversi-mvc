@@ -75,6 +75,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbGVyL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/Speler/Role.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3BlbGVyL1JvbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/rolin/Code/tasker/ReversiMvcApp/ReversiMvcApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

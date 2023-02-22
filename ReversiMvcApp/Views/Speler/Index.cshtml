@@ -44,6 +44,10 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Guuid">Edit</a> |
+                @if (this.User.IsInRole("Beheerder"))
+                {
+                    <span><a asp-action="Role" asp-route-id="@item.Guuid">Rollen</a> | </span>
+                }
                 <a asp-action="Details" asp-route-id="@item.Guuid">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Guuid">Delete</a>
             </td>

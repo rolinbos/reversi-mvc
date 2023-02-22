@@ -37,62 +37,6 @@
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
-        
-        @if (this.User.IsInRole("Beheerder"))
-        {
-            <span>Beheerder</span>
-        }
-        
-        @if (this.User.IsInRole("Mediator"))
-        {
-            <span>Mediator</span>
-        }
-        
-        @if (this.User.IsInRole("Speler"))
-        {
-            <span>Speler</span>
-        }
-        
-        @if (this.User.IsInRole("Beheerder"))
-        {
-            <form asp-action="Role">
-                <input type="hidden" name="id" value="@Model.Guuid" />
-                <div class="form-group">
-                    <label for="roles" class="control-label">Rolen</label>
-                    <select name="roles" id="roles" class="form-control" multiple>
-                        @if (this.User.IsInRole("Beheerder"))
-                        {
-                            <option value="Beheerder" selected="true">Beheerder</option>    
-                        }
-                        else
-                        {
-                            <option value="Beheerder">Beheerder</option>
-                        }
-                        
-                        @if (this.User.IsInRole("Mediator"))
-                        {
-                            <option value="Mediator" selected="true">Mediator</option>
-                        }
-                        else
-                        {
-                            <option value="Mediator">Mediator</option>    
-                        }
-                        
-                        @if (this.User.IsInRole("Speler"))
-                        {
-                            <option value="Speler" selected="true">Speler</option>
-                        }
-                        else
-                        {
-                            <option value="Speler">Speler</option>    
-                        }
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
-            </form>
-        }
     </div>
 </div>
 

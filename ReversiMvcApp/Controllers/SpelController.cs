@@ -49,7 +49,7 @@ namespace ReversiMvcApp
         {
             Spel nieuwSpel = _apiServices.NieuwSpel(this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value, spel.omschrijving);
 
-            return RedirectToAction(nameof(Play), new {spelToken = nieuwSpel.token});
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Done(string token, string spelerToken)

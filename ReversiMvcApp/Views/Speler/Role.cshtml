@@ -1,0 +1,50 @@
+@model ReversiMvcApp.Models.User
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<h2>Rol aanpassen voor @Model.Naam </h2>
+
+<form asp-action="Role">
+    <input type="hidden" name="id" value="@Model.Guuid" />
+    <div class="form-group">
+        <label for="roles" class="control-label">Rolen</label>
+        <select name="roles" id="roles" class="form-control" multiple>
+            @if (Model.Rollen.Contains("Beheerder"))
+            {
+                <option value="Beheerder" selected="true">Beheerder</option>    
+            }
+            else
+            {
+                <option value="Beheerder">Beheerder</option>
+            }
+                    
+            @if (Model.Rollen.Contains("Mediator"))
+            {
+                <option value="Mediator" selected="true">Mediator</option>
+            }
+            else
+            {
+                <option value="Mediator">Mediator</option>    
+            }
+                    
+            @if (Model.Rollen.Contains("Speler"))
+            {
+                <option value="Speler" selected="true">Speler</option>
+            }
+            else
+            {
+                <option value="Speler">Speler</option>    
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

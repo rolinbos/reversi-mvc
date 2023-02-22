@@ -17,11 +17,13 @@ namespace ReversiMvcApp
     {
         private readonly ApiServices _apiServices;
         private readonly ReversiDbContext _context;
+        private readonly ApplicationDbContext _applicationDbContext;
         private readonly UserManager<IdentityUser> _userManager;
         
-        public SpelerController(ReversiDbContext context, UserManager<IdentityUser> userManager)
+        public SpelerController(ReversiDbContext context, ApplicationDbContext applicationDbContext, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _applicationDbContext = applicationDbContext;
             _apiServices = new ApiServices();
             _userManager = userManager;
         }
@@ -130,6 +132,31 @@ namespace ReversiMvcApp
             }
             return View(speler);
         }
+        
+        // GET: Speler/Role/5
+        [Authorize(Roles = "Beheerder")]
+        public async Task<IActionResult> Role(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            
+            var dbUser = await _userManager.FindByIdAsync(id);
+            if (dbUser == null)
+            {
+                return NotFound();
+            }
+            
+            var user = new User()
+            {
+                Naam = dbUser.UserName,
+                Guuid = dbUser.Id,
+                Rollen = (List<string>) await _userManager.GetRolesAsync(dbUser)
+            };
+            
+            return View(user);
+        }
 
         // POST: Speler/Role/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -151,7 +178,7 @@ namespace ReversiMvcApp
                 return NotFound();
             }
             
-            var currentUser = await _userManager.FindByIdAsync(speler.Guuid);
+            var currentUser = await _userManager.FindByIdAsync(id);
 
             if (currentUser == null)
             {

@@ -7,14 +7,6 @@
     var currentUserId = currentUser.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 }
 
-@* <h1>Statistieken</h1> *@
-@* *@
-@* <div class="d-flex flex-row justify-content-between"> *@
-@*     <div></div> *@
-@*     <div></div> *@
-@*     <div></div> *@
-@* </div> *@
-
 <h1>Spellen</h1>
 
 <p>
@@ -72,7 +64,10 @@
                 @item.omschrijving
             </td>
             <td>
-                @if (item.aanDeBeurt == 1 && currentUserId == item.speler2Token)
+                @if (item.speler2Token == null || item.speler2Token == "")
+                {
+                    <span>Wachten op tegenstander</span>
+                } else if (item.aanDeBeurt == 1 && currentUserId == item.speler2Token)
                 {
                     <span>Jij bent aan de buurt</span>
                 }else if (item.aanDeBeurt == 2 && currentUserId == item.speler1Token)
@@ -88,7 +83,14 @@
                 }
             </td>
             <td>
-                <a asp-action="Play" asp-route-spelToken="@item.token">Naar bord toe</a>
+                @if (item.speler2Token == null || item.speler2Token == "")
+                {
+                    <span></span>
+                }
+                else
+                {
+                    <a asp-action="Play" asp-route-spelToken="@item.token">Naar bord toe</a>
+                }
             </td>
         </tr>        
     }
